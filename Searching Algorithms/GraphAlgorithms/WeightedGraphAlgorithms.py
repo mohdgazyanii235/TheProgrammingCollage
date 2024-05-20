@@ -1,6 +1,5 @@
 import heapq
-
-
+from WeightedGraph import WeightedGraph
 
 
 '''
@@ -48,8 +47,40 @@ def dijkstra(graph, start_vertex):
         for neighbour, weight in graph.adjacency_list[current_vertex]:
             distance = current_distance + weight
             if distance < distances[neighbour]:
-                distance[neighbour] = distance
+                distances[neighbour] = distance
                 heapq.heappush(priority_queue, (distance, neighbour))
     
     return distances
 
+
+def bellman_ford(graph, start_vertex):
+    distances = {vertex: float('infinity') for vertex in graph.adjacency_list}
+    distances[start_vertex] = 0
+
+    for _ in range(len(graph.adjacency_list) - 1):
+        for vertex in graph.adjacency_list:
+            for neighbour, weight in graph.adjacency_list[vertex]:
+                if distances[vertex] + weight < distances[neighbour]:
+                    distances[neighbour] = distances[vertex] + weight
+
+    for vertex in graph.adjacency_list:
+        for neighbour, weight in graph.adjacency_list[vertex]:
+            if distances[vertex] + weight < distances[neighbour]:
+                print("Negative cycle detected")
+                return None
+
+    return distances
+
+
+
+adjaency_list = {'a': [('b', 1), ('e', 2)],
+                 'b': [('a', 1), ('c', 1), ('e', 2)],
+                 'c': [('b', 1), ('d', 2)],
+                 'd': [('c', 2)],
+                 'e': [('a', 2), ('b', 2), ('f', 3)],
+                 'f': [('e', 3)]}
+
+graph = WeightedGraph(adjaency_list)
+
+print(dijkstra(graph, 'a'))
+print(bellman_ford(graph, 'a'))

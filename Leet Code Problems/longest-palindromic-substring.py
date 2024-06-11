@@ -24,11 +24,3 @@ class Solution:
             i += 1
 
         return max_palindrome
-
-
-
-
-    
-
-solution = Solution()
-print(solution.longestPalindrome("cbbd"))

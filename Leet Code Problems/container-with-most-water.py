@@ -20,7 +20,6 @@ class Solution:
             else:
                 j -=1 
         
-        print(max_tuple)
         return max_area
     
 

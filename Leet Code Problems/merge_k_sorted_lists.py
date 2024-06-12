@@ -37,14 +37,3 @@ class Solution:
                 final_list = self.insert_in_order(final_list, value)
 
         return final_list
-        
-
-
-
-
-solution = Solution()
-
-solution.mergeKLists([ListNode(1, ListNode(4, ListNode(5, None))),
-                      ListNode(1, ListNode(3, ListNode(4, None))),
-                      ListNode(2, ListNode(6, None))])
-

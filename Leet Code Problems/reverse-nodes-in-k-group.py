@@ -35,29 +35,26 @@ class Solution:
         return head
 
     def reverseKGroup(self, head, k: int) -> ListNode:
-        final_list = None
+        finalList = None
         temp_list = head
         current = temp_list
-
-        counter = 0
-        
-
-        while counter < k and current:
-            current = current.next
-            counter += 1
-
+        counter = 1
+        while current:
             if counter == k:
+                counter = 1
                 next_node = current.next
                 current.next = None
                 temp_list = self.reverseList(temp_list)
-                final_list = self.appendToList(final_list, temp_list)
+                finalList = self.appendToList(finalList, temp_list)
                 temp_list = next_node
                 current = temp_list
-                counter = 0
-
-        final_list = self.appendToList(final_list, next_node)
-
-        return final_list
+            elif counter < k:
+                current = current.next
+                counter += 1
+        
+        finalList = self.appendToList(finalList, temp_list)
+        
+        return finalList
         
 
 
@@ -66,11 +63,7 @@ class Solution:
 
 solution = Solution()
 
-list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6, ListNode(7, None)))))))
+list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, None)))))
 
 solution.printList(list)
-# list = solution.reverseKGroup(list, 2)
-# solution.printList(list)
-
-# solution.printList(solution.appendToList(list, ListNode(8, None)))
 solution.printList(solution.reverseKGroup(list, 2))

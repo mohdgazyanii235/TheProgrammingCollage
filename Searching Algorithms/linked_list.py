@@ -5,13 +5,13 @@ class ListNode:
     
 
 # Print a linked list
-
 def print_list(head: ListNode):
     while head.next:
         print(str(head.val) + " -> ", end="")
         head = head.next
     print(head.val)
 
+# Print a linked list recursively
 def print_list_recursive(head):
     if head:
         if head.next:
@@ -29,7 +29,6 @@ def reverse(head: ListNode) -> ListNode:
     final = ListNode(head.val, final)
     return final
 
-
 # Reverse a linked list in position
 def reverse_in_position(head: ListNode) -> ListNode:
     last_node = None
@@ -40,7 +39,6 @@ def reverse_in_position(head: ListNode) -> ListNode:
         head = next_node
     head = last_node
     return head
-
 
 # Insert at end of linked list
 def insert(head: ListNode, item) -> ListNode:
@@ -68,14 +66,14 @@ def insert_sorted(head: ListNode, item) -> ListNode:
 
     return head
 
-list = ListNode(1, ListNode(2, ListNode(3, ListNode(5, None))))
+
+# list = ListNode(1, ListNode(2, ListNode(3, ListNode(5, None))))
+
+
 # print_list(list)
 # print_list_recursive(list)
-
-
 # print_list(reverse(list))
 # print_list(reverse_in_position(list))
-
 # print_list(insert(list, 4))
 # print_list(insert_at_start(list, 4))
 # print_list(insert_sorted(list, 4))

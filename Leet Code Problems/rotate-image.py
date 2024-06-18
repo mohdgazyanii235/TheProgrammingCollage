@@ -22,9 +22,6 @@ class Solution:
             matrix[i] = matrix[i][::-1]
             i += 1
 
-
-        
-
     def rotate(self, matrix) -> None:
         self.diagonal_flip(matrix)
         self.horizontal_flip(matrix)
